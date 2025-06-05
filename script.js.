@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ເວັບໄຊທ໌ສອນພາສາອັງກິດ</title>
+    <!-- Link to Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for better readability in Lao */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Styling for interactive elements */
+        .module-header, .quiz-button {
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .module-header:hover {
+            background-color: #e2e8f0; /* bg-gray-200 */
+        }
+        .quiz-button:hover:not(.disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .quiz-button.correct {
+            background-color: #10b981; /* bg-emerald-500 */
+            color: white;
+        }
+        .quiz-button.incorrect {
+            background-color: #ef4444; /* bg-red-500 */
+            color: white;
+        }
+        .quiz-button.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        .feedback-box {
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 lg:p-12">
+        <!-- Header Section -->
+        <header class="bg-blue-600 text-white p-6 md:p-8 rounded-xl shadow-lg mb-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">ຍິນດີຕ້ອນຮັບສູ່ເວັບໄຊທ໌ສອນພາສາອັງກິດ!</h1>
+            <p class="text-lg md:text-xl">ຮຽນຮູ້ພາສາອັງກິດຢ່າງງ່າຍດາຍ ແລະ ມີປະສິດທິພາບ.</p>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Learning Modules Section -->
+            <section class="lg:col-span-2 bg-white p-6 rounded-xl shadow-md">
+                <h2 class="text-2xl font-bold mb-6 text-blue-700">ບົດຮຽນພາສາອັງກິດ</h2>
+
+                <!-- Module 1: Basic Vocabulary -->
+                <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+                    <div class="module-header bg-gray-100 p-4 flex justify-between items-center" onclick="toggleModule('module1')">
+                        <h3 class="text-lg font-semibold text-gray-700">1. ຄຳສັບພື້ນຖານ (Basic Vocabulary)</h3>
+                        <span class="text-xl font-bold text-gray-500">+</span>
+                    </div>
+                    <div id="module1-content" class="module-content p-4 border-t border-gray-200 hidden">
+                        <p class="mb-2">ຮຽນຮູ້ຄຳສັບທີ່ໃຊ້ໃນຊີວິດປະຈຳວັນເຊັ່ນ: Good morning, Hello, Thank you, Please, Excuse me.</p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Hello! (ສະບາຍດີ!)</li>
+                            <li>Good morning! (ສະບາຍດີຕອນເຊົ້າ!)</li>
+                            <li>Thank you! (ຂອບໃຈ!)</li>
+                            <li>Please (ກະລຸນາ)</li>
+                            <li>Excuse me (ຂໍໂທດ / ອະນຸຍາດ)</li>
+                            <li>Yes / No (ແມ່ນ / ບໍ່)</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-500">ທ່ານສາມາດຄລິກທີ່ຫົວຂໍ້ເພື່ອປິດ/ເປີດບົດຮຽນ.</p>
+                    </div>
+                </div>
+
+                <!-- Module 2: Grammar Basics -->
+                <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+                    <div class="module-header bg-gray-100 p-4 flex justify-between items-center" onclick="toggleModule('module2')">
+                        <h3 class="text-lg font-semibold text-gray-700">2. ໄວຍາກອນ (Grammar)</h3>
+                        <span class="text-xl font-bold text-gray-500">+</span>
+                    </div>
+                    <div id="module2-content" class="module-content p-4 border-t border-gray-200 hidden">
+                        <p class="mb-2">ເຂົ້າໃຈໂຄງສ້າງປະໂຫຍກພື້ນຖານ: Subject + Verb + Object. (ປະທານ + ຄຳກຳມະ + ກຳ). ຕົວຢ່າງ:</p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>I eat rice. (ຂ້ອຍກິນເຂົ້າ.)</li>
+                            <li>You like coffee. (ເຈົ້າມັກກາເຟ.)</li>
+                            <li>She studies English. (ລາວຜູ້ຍິງຮຽນພາສາອັງກິດ.)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Module 3: Pronunciation -->
+                <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+                    <div class="module-header bg-gray-100 p-4 flex justify-between items-center" onclick="toggleModule('module3')">
+                        <h3 class="text-lg font-semibold text-gray-700">3. ການອອກສຽງ (Pronunciation)</h3>
+                        <span class="text-xl font-bold text-gray-500">+</span>
+                    </div>
+                    <div id="module3-content" class="module-content p-4 border-t border-gray-200 hidden">
+                        <p class="mb-2">ຝຶກອອກສຽງພະຍັນຊະນະ ແລະ ສະຫຼະທີ່ແຕກຕ່າງກັນໃນພາສາອັງກິດ. ຄວາມສຳຄັນຂອງການອອກສຽງທີ່ຊັດເຈນ.</p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>"th" sound (e.g., "thank," "this")</li>
+                            <li>Vowel sounds (long/short vowels)</li>
+                            <li>Stress in words and sentences</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Module 4: Daily Conversation -->
+                <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+                    <div class="module-header bg-gray-100 p-4 flex justify-between items-center" onclick="toggleModule('module4')">
+                        <h3 class="text-lg font-semibold text-gray-700">4. ການສົນທະນາປະຈຳວັນ (Daily Conversation)</h3>
+                        <span class="text-xl font-bold text-gray-500">+</span>
+                    </div>
+                    <div id="module4-content" class="module-content p-4 border-t border-gray-200 hidden">
+                        <p class="mb-2">ປະໂຫຍກທີ່ໃຊ້ໃນການທັກທາຍ, ແນະນຳຕົວ, ສັ່ງອາຫານ, ແລະ ອື່ນໆ.</p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>"How are you?" (ທ່ານສະບາຍດີບໍ?)</li>
+                            <li>"What is your name?" (ເຈົ້າຊື່ຫຍັງ?)</li>
+                            <li>"Can I have a coffee, please?" (ຂໍກາເຟແດ່, ກະລຸນາ)</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Interactive Quiz Section -->
+            <aside class="lg:col-span-1 bg-white p-6 rounded-xl shadow-md">
+                <h2 class="text-2xl font-bold mb-6 text-blue-700">ແບບທົດສອບຄວາມຮູ້</h2>
+
+                <div id="quiz-area" class="text-left">
+                    <p id="quiz-question" class="text-lg font-medium mb-4 text-gray-700">ກົດ "ເລີ່ມທົດສອບ" ເພື່ອເລີ່ມຕົ້ນ.</p>
+                    <div id="quiz-options" class="grid grid-cols-1 gap-3 mb-4">
+                        <!-- Quiz options will be loaded here by JS -->
+                    </div>
+                    <div id="quiz-feedback" class="feedback-box text-center font-semibold text-sm rounded-lg py-2 mb-4 hidden"></div>
+
+                    <button id="start-quiz-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">ເລີ່ມທົດສອບ</button>
+                    <button id="next-question-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg mt-3 hidden">ຄຳຖາມຕໍ່ໄປ</button>
+                    <button id="retake-quiz-btn" class="w-full bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-4 rounded-lg mt-3 hidden">ທົດສອບອີກຄັ້ງ</button>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="text-center text-gray-600 mt-8 p-4 border-t border-gray-200">
+            <p>&copy; 2024 ເວັບໄຊທ໌ສອນພາສາອັງກິດ. ສະຫງວນລິຂະສິດ.</p>
+            <p class="text-sm mt-1">ສ້າງຂຶ້ນເພື່ອການສຶກສາ</p>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript for accordion-like module functionality
+        function toggleModule(id) {
+            const content = document.getElementById(id + '-content');
+            const header = content.previousElementSibling;
+            const plusSign = header.querySelector('span');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                plusSign.textContent = '-';
+            } else {
+                content.classList.add('hidden');
+                plusSign.textContent = '+';
+            }
+        }
+
+        // Quiz Logic
+        const quizQuestions = [
+            {
+                question: "ຄຳວ່າ 'Hello' ແປວ່າຫຍັງ?",
+                options: ["ສະບາຍດີ", "ຂອບໃຈ", "ລາກ່ອນ", "ແມ່ນ"],
+                answer: 0
+            },
+            {
+                question: "ປະໂຫຍກ 'I am a student.' ແປວ່າຫຍັງ?",
+                options: ["ລາວເປັນນັກຮຽນ", "ຂ້ອຍເປັນນັກຮຽນ", "ພວກເຂົາເປັນນັກຮຽນ", "ເຈົ້າເປັນນັກຮຽນ"],
+                answer: 1
+            },
+            {
+                question: "ຄຳວ່າ 'Thank you' ຄວນຕອບຮັບວ່າແນວໃດ?",
+                options: ["You're welcome", "No problem", "Goodbye", "Hello"],
+                answer: 0
+            },
+            {
+                question: "ຄຳໃດແມ່ນຄຳກິລິຍາ (verb)?",
+                options: ["Book (ປື້ມ)", "Table (ໂຕະ)", "Run (ແລ່ນ)", "Happy (ມີຄວາມສຸກ)"],
+                answer: 2
+            }
+        ];
+
+        let currentQuizQuestionIndex = 0;
+        let score = 0;
+        let quizActive = false;
+
+        // Get Quiz DOM elements
+        const quizQuestionElem = document.getElementById('quiz-question');
+        const quizOptionsElem = document.getElementById('quiz-options');
+        const quizFeedbackElem = document.getElementById('quiz-feedback');
+        const startQuizBtn = document.getElementById('start-quiz-btn');
+        const nextQuestionBtn = document.getElementById('next-question-btn');
+        const retakeQuizBtn = document.getElementById('retake-quiz-btn');
+
+        // Function to start the quiz
+        function startQuiz() {
+            currentQuizQuestionIndex = 0;
+            score = 0;
+            quizActive = true;
+            startQuizBtn.classList.add('hidden');
+            retakeQuizBtn.classList.add('hidden');
+            displayQuizQuestion();
+            quizFeedbackElem.classList.add('hidden'); // Hide feedback on new quiz
+        }
+
+        // Function to display quiz question and options
+        function displayQuizQuestion() {
+            if (currentQuizQuestionIndex < quizQuestions.length) {
+                const q = quizQuestions[currentQuizQuestionIndex];
+                quizQuestionElem.textContent = q.question;
+                quizOptionsElem.innerHTML = ''; // Clear previous options
+                quizFeedbackElem.classList.add('hidden'); // Hide feedback
+                quizFeedbackElem.classList.remove('feedback-correct', 'feedback-incorrect'); // Reset feedback styling
+                nextQuestionBtn.classList.add('hidden'); // Hide next button
+
+                q.options.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.classList.add('quiz-button', 'bg-emerald-200', 'text-emerald-800', 'p-3', 'rounded-lg', 'font-semibold');
+                    button.dataset.index = index;
+                    button.addEventListener('click', handleQuizAnswer);
+                    quizOptionsElem.appendChild(button);
+                });
+            } else {
+                endQuiz();
+            }
+        }
+
+        // Function to handle quiz answer click
+        function handleQuizAnswer(event) {
+            if (!quizActive) return;
+
+            const selectedIndex = parseInt(event.target.dataset.index);
+            const correctAnswerIndex = quizQuestions[currentQuizQuestionIndex].answer;
+
+            // Disable all options after selection
+            Array.from(quizOptionsElem.children).forEach(button => {
+                button.classList.add('disabled');
+                button.removeEventListener('click', handleQuizAnswer);
+            });
+
+            quizFeedbackElem.classList.remove('hidden');
+            if (selectedIndex === correctAnswerIndex) {
+                score++;
+                quizFeedbackElem.textContent = 'ຖືກຕ້ອງ!';
+                quizFeedbackElem.classList.add('feedback-correct');
+                event.target.classList.add('correct');
+            } else {
+                quizFeedbackElem.textContent = `ຜິດ! ຄຳຕອບທີ່ຖືກຕ້ອງແມ່ນ: "${quizQuestions[currentQuizQuestionIndex].options[correctAnswerIndex]}"`;
+                quizFeedbackElem.classList.add('feedback-incorrect');
+                event.target.classList.add('incorrect');
+                // Optionally highlight the correct answer
+                quizOptionsElem.children[correctAnswerIndex].classList.add('correct');
+            }
+            nextQuestionBtn.classList.remove('hidden'); // Show next question button
+        }
+
+        // Function to move to next quiz question
+        function nextQuizQuestion() {
+            currentQuizQuestionIndex++;
+            displayQuizQuestion();
+        }
+
+        // Function to end the quiz
+        function endQuiz() {
+            quizActive = false;
+            quizQuestionElem.textContent = `ແບບທົດສອບຈົບແລ້ວ!`;
+            quizOptionsElem.innerHTML = '';
+            quizFeedbackElem.classList.remove('hidden');
+            quizFeedbackElem.classList.add('feedback-correct');
+            quizFeedbackElem.classList.remove('feedback-incorrect');
+            quizFeedbackElem.textContent = `ທ່ານໄດ້ຄະແນນ: ${score} ຈາກ ${quizQuestions.length} ຄຳຖາມ.`;
+            nextQuestionBtn.classList.add('hidden');
+            retakeQuizBtn.classList.remove('hidden');
+        }
+
+        // Event Listeners for Quiz
+        startQuizBtn.addEventListener('click', startQuiz);
+        nextQuestionBtn.addEventListener('click', nextQuizQuestion);
+        retakeQuizBtn.addEventListener('click', startQuiz); // Retake quiz restarts the quiz
+
+        // Initial setup for quiz on page load
+        window.onload = function() {
+            // No specific action needed as the initial state is set in HTML
+        };
+    </script>
+</body>
+</html>
